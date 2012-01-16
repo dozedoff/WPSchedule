@@ -77,6 +77,9 @@ public class ImageGroup implements Serializable{
 		
 	}
 	
+	/**
+	 * Filter out JPG and PNG images. API 10 Wallpaper only supports these images (at least from InputStream).
+	 */
 	class ImageFilter implements FilenameFilter{
 		public boolean accept(File dir, String filename) {
 			if(filename == null){
