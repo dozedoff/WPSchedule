@@ -29,6 +29,8 @@ import java.util.Iterator;
  */
 public class ImageGroup implements Serializable{
 	private static final long serialVersionUID = 1L;
+
+	private String groupname;
 	
 	private final ArrayList<File> singleImages = new ArrayList<File>(); // single images added by the user
 	private final ArrayList<File> folders = new ArrayList<File>(); // image folders added by the user
@@ -88,5 +90,26 @@ public class ImageGroup implements Serializable{
 			return false;
 		}
 		
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == null || !(o instanceof ImageGroup)){
+			return false;
+		}
+		
+		if(((ImageGroup)o).getGroupname().equals(groupname)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public String getGroupname() {
+		return groupname;
+	}
+
+	public void setGroupname(String groupname) {
+		this.groupname = groupname;
 	}
 }
