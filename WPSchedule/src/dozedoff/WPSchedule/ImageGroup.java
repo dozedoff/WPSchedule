@@ -61,6 +61,8 @@ public class ImageGroup implements Serializable{
 		}
 		
 		// now add the images to allImages
+		allImages.clear();
+		
 		for(File image : singleImages){
 			allImages.add(image);
 		}
