@@ -31,4 +31,18 @@ public class Schedule implements Serializable{
 	//TODO  weekdays  -- how to do this? enums with MO || WE ? Is that possible?
 	Date startTime, endTime;
 	LinkedList<ImageGroup> imageGroups = new LinkedList<ImageGroup>();
+	
+	/**
+	 * Add a ImageGroup to the schedule. Will ignore the group if one with an identical name is already present.
+	 * @param group the ImageGroup to add
+	 * @return true if the group was added
+	 */
+	public boolean addGroup(ImageGroup group){
+		if(imageGroups.contains(group)){
+			return false;
+		}else{
+			imageGroups.add(group);
+			return true;
+		}
+	}
 }
