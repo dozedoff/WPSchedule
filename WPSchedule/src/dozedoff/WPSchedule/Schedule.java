@@ -17,13 +17,18 @@
  */
 package dozedoff.WPSchedule;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.LinkedList;
 
 /**
  * Responsible for what pictures are displayed when and at what intervals.
  */
-public class Schedule {
+public class Schedule implements Serializable{
+	private static final long serialVersionUID = 1L;
 	boolean enabled = false;
+	boolean randomOrder = false; // set true to display images in random order
 	//TODO  weekdays  -- how to do this? enums with MO || WE ? Is that possible?
 	Date startTime, endTime;
+	LinkedList<ImageGroup> imageGroups = new LinkedList<ImageGroup>();
 }
