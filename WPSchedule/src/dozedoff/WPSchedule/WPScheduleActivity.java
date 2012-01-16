@@ -20,6 +20,9 @@ package dozedoff.WPSchedule;
 import android.app.Activity;
 import android.os.Bundle;
 
+/**
+ * Main activity for WPSchedule
+ */
 public class WPScheduleActivity extends Activity {
     /** Called when the activity is first created. */
     @Override
