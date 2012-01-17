@@ -8,12 +8,13 @@ import static org.mockito.Mockito.*;
 
 public class ScheduleTest {
 	Schedule schedule;
-	ImageGroup mockImageGroup;
+	ImageGroup mockImageGroupA, mockImageGroupB;
 	
 	@Before
 	public void setUp(){
 		schedule = new Schedule();
-		mockImageGroup = mock(ImageGroup.class);
+		mockImageGroupA = spy(new ImageGroup());
+		mockImageGroupB = spy(new ImageGroup());
 	}
 
 	@Test
