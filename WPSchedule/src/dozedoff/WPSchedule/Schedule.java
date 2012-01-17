@@ -45,4 +45,107 @@ public class Schedule implements Serializable{
 			return true;
 		}
 	}
+	
+	/**
+	 * Check if the schedule is active.
+	 * @param time the current time
+	 * @return true if active
+	 */
+	public boolean isActive(Date time){
+		if(! enabled){
+			return false;
+		}
+		
+		//TODO add time comparison code here
+		
+		return false;
+	}
+	
+	/**
+	 * Query the state of the schedule.
+	 * @return true if enabled
+	 */
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	/**
+	 * Enable the schedule.<br>
+	 * A schedule set to false (disabled) will always return false on isActive(Date time).
+	 * @param enabled enabled if set to true
+	 */
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
+	/**
+	 * If set to true, Images assigned to this schedule will be displayed in random order.
+	 * @return true if enabled
+	 */
+	public boolean isRandomOrder() {
+		return randomOrder;
+	}
+
+	/**
+	 * Set the display order. When the order is changed the the current Image order will be scrambled.
+	 * @param randomOrder enabled if set to true
+	 */
+	public void setRandomOrder(boolean randomOrder) {
+		this.randomOrder = randomOrder;
+	}
+
+	/**
+	 * Returns the time when the schedule starts.<br>
+	 * <b>Note:</b> The schedule is active on and after the start time.
+	 * @return the start time
+	 */
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	/**
+	 * Set the start time of the schedule.
+	 * <b>Note:</b> The schedule is active on and after the start time.
+	 * @param startTime the start time
+	 */
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+
+	/**
+	 * Returns the end time of the schedule.<br>
+	 * <b>Note:</b> The schedule is active up to and including the end time.
+	 * @return the end time of the schedule
+	 */
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	/**
+	 * Set the end time of the schedule.<br>
+	 * <b>Note:</b> The schedule is active up to and including the end time.
+	 * @param endTime the end time of the schedule
+	 */
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+	
+	/**
+	 * Get the ImageGroups assigned to this schedule
+	 * @return all {@link ImageGroup} items assigned to this schedule
+	 */
+	public LinkedList<ImageGroup> getImageGroups() {
+		return imageGroups;
+	}
+	
+	/**
+	 * Attempt to add a ImageGroup to the schedule.<br>
+	 * Duplicate image groups will not be added.
+	 * @param imageGroup {@link ImageGroup} to add
+	 * @return true if successfully added
+	 */
+	public boolean addImageGroup(ImageGroup imageGroup){
+		
+		return false;
+	}
 }
