@@ -32,6 +32,7 @@ public class Schedule implements Serializable{
 	Date startTime, endTime;
 	LinkedList<ImageGroup> imageGroups = new LinkedList<ImageGroup>();
 	
+	//TODO add time validation, start time < end time
 	/**
 	 * Add a ImageGroup to the schedule. Will ignore the group if one with an identical name is already present.
 	 * @param group the ImageGroup to add
@@ -145,7 +146,11 @@ public class Schedule implements Serializable{
 	 * @return true if successfully added
 	 */
 	public boolean addImageGroup(ImageGroup imageGroup){
-		
-		return false;
+		if(imageGroups.contains(imageGroup)){
+			return false;
+		}else{
+			imageGroups.add(imageGroup);
+			return true;
+		}
 	}
 }
