@@ -33,20 +33,7 @@ public class Schedule implements Serializable{
 	LinkedList<ImageGroup> imageGroups = new LinkedList<ImageGroup>();
 	
 	//TODO add time validation, start time < end time
-	/**
-	 * Add a ImageGroup to the schedule. Will ignore the group if one with an identical name is already present.
-	 * @param group the ImageGroup to add
-	 * @return true if the group was added
-	 */
-	public boolean addGroup(ImageGroup group){
-		if(imageGroups.contains(group)){
-			return false;
-		}else{
-			imageGroups.add(group);
-			return true;
-		}
-	}
-	
+
 	/**
 	 * Check if the schedule is active.
 	 * @param time the current time
