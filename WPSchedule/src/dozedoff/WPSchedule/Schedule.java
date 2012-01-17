@@ -105,15 +105,6 @@ public class Schedule implements Serializable{
 	}
 
 	/**
-	 * Set the start time of the schedule.
-	 * <b>Note:</b> The schedule is active on and after the start time.
-	 * @param startTime the start time
-	 */
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-
-	/**
 	 * Returns the end time of the schedule.<br>
 	 * <b>Note:</b> The schedule is active up to and including the end time.
 	 * @return the end time of the schedule
@@ -123,12 +114,18 @@ public class Schedule implements Serializable{
 	}
 
 	/**
-	 * Set the end time of the schedule.<br>
-	 * <b>Note:</b> The schedule is active up to and including the end time.
-	 * @param endTime the end time of the schedule
+	 * Set the start and end time of a schedule.<br><br> If the start time is later than the
+	 * end time, start time will be set to match end time. The same is true for the end time.
+	 * A null value will not change the current time.<br>
+	 * <b>Note:</b><br>
+	 * The schedule is active on and after the start time.<br>
+	 * The schedule is active up to and including the end time.
+	 * 
+	 * @param starttime the start time to set
+	 * @param endtime the end time to set
 	 */
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
+	public void setTimeWindow(Date starttime, Date endtime){
+		
 	}
 	
 	/**
