@@ -88,7 +88,7 @@ public class Schedule implements Serializable{
 	}
 
 	/**
-	 * Set the display order. When the order is changed the the current Image order will be scrambled.
+	 * Set the display order.
 	 * @param randomOrder enabled if set to true
 	 */
 	public void setRandomOrder(boolean randomOrder) {
