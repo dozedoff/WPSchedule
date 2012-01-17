@@ -30,7 +30,7 @@ import java.util.Iterator;
 public class ImageGroup implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	private String groupname;
+	private String groupname = "New Group";
 	
 	private final ArrayList<File> singleImages = new ArrayList<File>(); // single images added by the user
 	private final ArrayList<File> folders = new ArrayList<File>(); // image folders added by the user
