@@ -40,6 +40,8 @@ public class ImageGroup implements Serializable{
 	/**
 	 * Check that folders and single images exist, remove obsolete entries.
 	 * Then re-populate allImages.<br>
+	 * When this method is called, getSequentialImage() will be reset to it's starting position and
+	 * the getRandomImage() oder will be scrambled.
 	 * <b>Note:</b> Adding files from folders <i>is not recursive</i>, meaning sub-folders
 	 * are not added.
 	 */
@@ -114,5 +116,13 @@ public class ImageGroup implements Serializable{
 
 	public void setGroupname(String groupname) {
 		this.groupname = groupname;
+	}
+	
+	public File getRandomImage(){
+		return null;
+	}
+	
+	public File getSequentialImage(){
+		return null;
 	}
 }
