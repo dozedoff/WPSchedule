@@ -4,22 +4,20 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-
+import static org.hamcrest.CoreMatchers.*;
 
 public class ScheduleTest {
 	Schedule schedule;
-	ImageGroup mockImageGroupA, mockImageGroupB;
 	
 	@Before
 	public void setUp(){
 		schedule = new Schedule();
-		mockImageGroupA = spy(new ImageGroup());
-		mockImageGroupB = spy(new ImageGroup());
 	}
 
 	@Test
 	public void testAddGroup() {
-		
+		assertThat(schedule.addImageGroup(new ImageGroup("New Group")), is(true));
+		assertThat(schedule.addImageGroup(new ImageGroup("New Group")), is(false));
 	}
 
 	@Test
