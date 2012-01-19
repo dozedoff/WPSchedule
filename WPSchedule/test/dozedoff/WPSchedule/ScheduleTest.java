@@ -3,7 +3,6 @@ package dozedoff.WPSchedule;
 import org.junit.*;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 import static org.hamcrest.CoreMatchers.*;
 
 public class ScheduleTest {
