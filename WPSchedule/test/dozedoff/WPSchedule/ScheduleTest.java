@@ -14,58 +14,21 @@ public class ScheduleTest {
 	}
 
 	@Test
-	public void testAddGroup() {
+	public void testAddImageGroup() {
 		assertThat(schedule.addImageGroup(new ImageGroup("New Group")), is(true));
 		assertThat(schedule.addImageGroup(new ImageGroup("New Group")), is(false));
+		assertThat(schedule.addImageGroup(new ImageGroup("group one")), is(true));
 	}
 
 	@Test
 	public void testIsActive() {
+		//TODO SO article about dates
 		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testIsEnabled() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetEnabled() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testIsRandomOrder() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetRandomOrder() {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testGetStartTime() {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testGetEndTime() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testSetTimeWindow() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetImageGroups() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testAddImageGroup() {
 		fail("Not yet implemented");
 	}
 }
