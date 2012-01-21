@@ -18,9 +18,9 @@
 package dozedoff.WPSchedule;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 
 /**
@@ -31,7 +31,7 @@ public class Schedule implements Serializable{
 	boolean enabled = false;
 	boolean randomOrder = false; // set true to display images in random order
 	//TODO  weekdays  -- how to do this? enums with MO || WE ? Is that possible?
-	Date startTime , endTime;
+	Date startTime = new Date(0, 0, 1, 8, 0), endTime = new Date(0,0,0,22,0);
 	LinkedList<ImageGroup> imageGroups = new LinkedList<ImageGroup>();
 	
 	//TODO add time validation, start time < end time
@@ -45,7 +45,11 @@ public class Schedule implements Serializable{
 		if(! enabled){
 			return false;
 		}
-		
+
+//		DateFormat f = new SimpleDateFormat("HH:mm:ss.SSS");
+//		  return f.format(d1).compareTo(f.format(d2)) < 0;
+
+		// according to http://stackoverflow.com/q/6988713/891292s
 		//TODO add time comparison code here
 		
 		return false;
