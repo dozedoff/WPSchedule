@@ -40,8 +40,11 @@ public class ScheduleTest {
 
 		schedule.setEnabled(true);
 
-		assertThat(schedule.isActive(midnight), is(false));
+		assertThat(schedule.isActive(sixAm), is(false));
+		assertThat(schedule.isActive(elevenAm), is(true));
+		assertThat(schedule.isActive(twoPm), is(true));
 		assertThat(schedule.isActive(ninePm), is(true));
+		assertThat(schedule.isActive(midnight), is(false));
 	}
 
 
