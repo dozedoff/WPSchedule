@@ -33,7 +33,11 @@ public class Schedule implements Serializable{
 	//TODO  weekdays  -- how to do this? enums with MO || WE ? Is that possible?
 	Date startTime = new Date(0, 0, 1, 8, 0), endTime = new Date(0,0,0,22,0);
 	LinkedList<ImageGroup> imageGroups = new LinkedList<ImageGroup>();
+	DateFormat format = new SimpleDateFormat("HH:mm");
 	
+	
+	// time comparison according to
+	// http://stackoverflow.com/q/6988713/891292s
 	//TODO add time validation, start time < end time
 
 	/**
@@ -46,11 +50,9 @@ public class Schedule implements Serializable{
 			return false;
 		}
 
-//		DateFormat f = new SimpleDateFormat("HH:mm:ss.SSS");
-//		  return f.format(d1).compareTo(f.format(d2)) < 0;
-
-		// according to http://stackoverflow.com/q/6988713/891292s
-		//TODO add time comparison code here
+		if((format.format(time).compareTo(format.format(startTime)) >= 0) && (format.format(time).compareTo(format.format(endTime)) <= 0)){
+			return true;
+		}
 		
 		return false;
 	}
