@@ -31,14 +31,13 @@ public class Schedule implements Serializable{
 	boolean enabled = false;
 	boolean randomOrder = false; // set true to display images in random order
 	//TODO  weekdays  -- how to do this? enums with MO || WE ? Is that possible?
-	Date startTime = new Date(0, 0, 1, 8, 0), endTime = new Date(0,0,0,22,0);
+	Date startTime = new Date(0, 0, 0, 8, 0), endTime = new Date(0,0,0,22,0);
 	LinkedList<ImageGroup> imageGroups = new LinkedList<ImageGroup>();
 	DateFormat format = new SimpleDateFormat("HH:mm");
 	
 	
 	// time comparison according to
 	// http://stackoverflow.com/q/6988713/891292s
-	//TODO add time validation, start time < end time
 
 	/**
 	 * Check if the schedule is active.
@@ -110,7 +109,7 @@ public class Schedule implements Serializable{
 
 	/**
 	 * Set the start and end time of a schedule.<br><br> If the start time is later than the
-	 * end time, start time will be set to match end time. The same is true for the end time.
+	 * end time, start time will be set to match end time.
 	 * A null value will not change the current time.<br>
 	 * <b>Note:</b><br>
 	 * The schedule is active on and after the start time.<br>
@@ -121,8 +120,18 @@ public class Schedule implements Serializable{
 	 */
 	public void setTimeWindow(Date starttime, Date endtime){
 		DateFormat f = new SimpleDateFormat("HH:mm:ss.SSS");
-		if( ! (f.format(starttime).compareTo(f.format(endtime)) < 0)){
-			//set time
+		if( ! (f.format(starttime).compareTo(f.format(endtime)) <= 0)){
+			startTime.setHours(endtime.getHours());
+			startTime.setMinutes(endtime.getMinutes());
+			
+			endTime.setHours(endtime.getHours());
+			endTime.setMinutes(endtime.getMinutes());
+		}else{
+			startTime.setHours(starttime.getHours());
+			startTime.setMinutes(starttime.getMinutes());
+			
+			endTime.setHours(endtime.getHours());
+			endTime.setMinutes(endtime.getMinutes());
 		}
 	}
 	
