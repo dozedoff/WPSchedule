@@ -38,7 +38,11 @@ public class ImageGroup implements Serializable{
 	private final ImageFilter imageFilter= new ImageFilter();
 	
 	public ImageGroup(String groupname){
-		this.groupname = groupname;
+		if(groupname == null || groupname.equals("")){
+			this.groupname = "New Group";
+		}else{
+			this.groupname = groupname;
+		}
 	}
 	
 	/**
@@ -118,8 +122,13 @@ public class ImageGroup implements Serializable{
 		return groupname;
 	}
 
-	public void setGroupname(String groupname) {
-		this.groupname = groupname;
+	public boolean setGroupname(String groupname) {
+		if(groupname == null || groupname.equals("")){
+			return false;
+		}else{
+			this.groupname = groupname;
+			return true;
+		}
 	}
 	
 	public File getRandomImage(){
