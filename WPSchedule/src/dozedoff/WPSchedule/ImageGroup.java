@@ -138,4 +138,25 @@ public class ImageGroup implements Serializable{
 	public File getSequentialImage(){
 		return null;
 	}
+	
+	public boolean addFile(File file){
+		if(file == null || (! file.exists())){
+			return false;
+		}
+		
+		if(!(file.isFile() || imageFilter.accept(file.getParentFile(), file.getName()))){
+			return false;
+		}
+		
+		singleImages.add(file);
+		return true;
+	}
+	
+	public ArrayList<File> getImages(){
+		return allImages;
+	}
+	
+	public ArrayList<File> getFolders(){
+		return folders;
+	}
 }
