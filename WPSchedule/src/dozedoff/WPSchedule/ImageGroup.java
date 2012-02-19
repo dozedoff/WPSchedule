@@ -17,6 +17,8 @@
  */
 package dozedoff.WPSchedule;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.Serializable;
@@ -36,6 +38,7 @@ public class ImageGroup implements Serializable{
 	private final ArrayList<File> folders = new ArrayList<File>(); // image folders added by the user
 	private final ArrayList<File> allImages = new ArrayList<File>(); // all images to be displayed
 	private final ImageFilter imageFilter= new ImageFilter();
+	private final PropertyChangeSupport change = new PropertyChangeSupport(this);
 	
 	public ImageGroup(String groupname){
 		if(groupname == null || groupname.equals("")){
@@ -131,14 +134,6 @@ public class ImageGroup implements Serializable{
 		}
 	}
 	
-	public File getRandomImage(){
-		return null;
-	}
-	
-	public File getSequentialImage(){
-		return null;
-	}
-	
 	public boolean addFile(File file){
 		if(file == null || (! file.exists())){
 			return false;
@@ -158,5 +153,13 @@ public class ImageGroup implements Serializable{
 	
 	public ArrayList<File> getFolders(){
 		return folders;
+	}
+	
+	public void addListener(PropertyChangeListener listener){
+		change.addPropertyChangeListener(listener);
+	}
+	
+	public void removePropertyChangeListener(PropertyChangeListener listener){
+		change.removePropertyChangeListener(listener);
 	}
 }

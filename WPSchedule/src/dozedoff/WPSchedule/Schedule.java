@@ -17,16 +17,20 @@
  */
 package dozedoff.WPSchedule;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.File;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 
 /**
  * Responsible for what pictures are displayed when and at what intervals.
  */
-public class Schedule implements Serializable{
+public class Schedule implements Serializable , PropertyChangeListener{
 	private static final long serialVersionUID = 1L;
 	boolean enabled = false;
 	boolean randomOrder = false; // set true to display images in random order
@@ -34,6 +38,7 @@ public class Schedule implements Serializable{
 	Date startTime = new Date(0, 0, 0, 8, 0), endTime = new Date(0,0,0,22,0);
 	LinkedList<ImageGroup> imageGroups = new LinkedList<ImageGroup>();
 	DateFormat format = new SimpleDateFormat("HH:mm");
+	ArrayList<File> images = new ArrayList<File>();
 	
 	
 	// time comparison according to
@@ -154,7 +159,27 @@ public class Schedule implements Serializable{
 			return false;
 		}else{
 			imageGroups.add(imageGroup);
+			imageGroup.addListener(this);
 			return true;
 		}
+	}
+	
+	public void removeImageGroup(ImageGroup imageGroup){
+		if(imageGroups.remove(imageGroup))
+			imageGroup.removePropertyChangeListener(this);
+	}
+
+	public void propertyChange(PropertyChangeEvent event) {
+		images.clear();
+		for(ImageGroup ig : imageGroups){
+			images.addAll(ig.getImages());
+		}
+		
+		if(randomOrder)
+			scramble();
+	}
+	
+	private void scramble(){
+		// TODO add code to generate random order
 	}
 }
