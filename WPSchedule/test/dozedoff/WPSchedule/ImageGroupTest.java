@@ -34,7 +34,34 @@ public class ImageGroupTest {
 	@Test
 	public void testValidate() throws IOException {
 		verifyFiles();
-		fail("Not yet implemented");
+		
+		for(File f : all){
+				ig.addFile(f);
+		}
+
+		assertThat(ig.getImages().size(), is(4));
+		assertThat(ig.getImages(), hasItem(testf.get(0)));
+		assertThat(ig.getImages(), hasItem(testf.get(1)));
+		assertThat(ig.getImages(), hasItem(testfsub.get(0)));
+		assertThat(ig.getImages(), hasItem(testfsub.get(0)));
+		
+		testf.get(0).delete();
+		ig.validate();
+		
+		assertThat(ig.getImages().size(), is(3));
+		assertThat(ig.getImages(), hasItem(testf.get(1)));
+		assertThat(ig.getImages(), hasItem(testfsub.get(0)));
+		assertThat(ig.getImages(), hasItem(testfsub.get(0)));
+		
+		for(File f : testfsub){
+			f.delete();
+		}
+		
+		testd.get(1).delete();
+		ig.validate();
+		
+		assertThat(ig.getImages().size(), is(1));
+		assertThat(ig.getImages(), hasItem(testf.get(1)));
 	}
 	
 	@Test
