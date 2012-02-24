@@ -168,16 +168,6 @@ public class Schedule implements Serializable , PropertyChangeListener{
 		if(imageGroups.remove(imageGroup))
 			imageGroup.removePropertyChangeListener(this);
 	}
-	
-	public File getRandomImage(){
-		//TODO add code to read from the random image list
-		return null;
-	}
-	
-	public File getSequentialImage(){
-		//TODO add code to read from the sequential image list
-		return null;
-	}
 
 	public void propertyChange(PropertyChangeEvent event) {
 		images.clear();
