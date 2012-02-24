@@ -74,4 +74,14 @@ public class ScheduleTest {
 		assertThat(schedule.getStartTime(), is(new Date(0,0,0,3,0)));
 		assertThat(schedule.getEndTime(), is(new Date(0,0,0,6,0)));
 	}
+	
+	@Test
+	public void testGetSequentialImage(){
+		fail("not implemented yet");
+	}
+	
+	@Test
+	public void testGetRndomImage(){
+		fail("not implemented yet");
+	}
 }

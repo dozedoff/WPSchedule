@@ -88,16 +88,6 @@ public class ImageGroupTest {
 		assertThat(ig.equals(new ImageGroup("TEST")), is(false));
 		assertThat(ig.equals(new int[3]), is(false));
 	}
-
-	@Test
-	public void testGetRandomImage() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetSequentialImage() {
-		fail("Not yet implemented");
-	}
 	
 	private void createFiles() throws IOException{
 		File tmpDir = Files.createTempDirectory("ImageGroupTest").toFile();
