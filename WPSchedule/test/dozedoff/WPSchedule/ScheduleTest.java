@@ -119,10 +119,12 @@ public class ScheduleTest {
 		}
 		
 		assertThat(recieved.size(), is(allFiles.size()));
+		File[] compare = new File[allFiles.size()];
+		allFiles.toArray(compare);
 		
-//		assertThat(recieved,hasItems(allFiles));
+		assertThat(recieved,hasItems(compare));
 		
-		fail("not implemented yet");
+		fail("test not finished yet");
 	}
 	
 	@Test
