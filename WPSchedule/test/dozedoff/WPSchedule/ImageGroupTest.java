@@ -38,6 +38,8 @@ public class ImageGroupTest {
 		for(File f : all){
 				ig.addFile(f);
 		}
+		
+		ig.validate();
 
 		assertThat(ig.getImages().size(), is(4));
 		assertThat(ig.getImages(), hasItem(testf.get(0)));

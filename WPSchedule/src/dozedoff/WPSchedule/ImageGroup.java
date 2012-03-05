@@ -17,13 +17,19 @@
  */
 package dozedoff.WPSchedule;
 
+import static org.junit.matchers.JUnitMatchers.containsString;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * Contains a list of images and folders that should be displayed.
@@ -134,19 +140,37 @@ public class ImageGroup implements Serializable{
 		}
 	}
 	
+	/**
+	 * Add a file or folder to the Image group. Folders and subfolders are scanned for images.
+	 * Duplicate files will not be added to the list.
+	 * @param file File or folder to add
+	 * @return true if the file or folder was addded.
+	 */
 	public boolean addFile(File file){
 		if(file == null || (! file.exists())){
 			return false;
 		}
 		
-		if(!(file.isFile() || imageFilter.accept(file.getParentFile(), file.getName()))){
-			return false;
+		if(file.isDirectory() || !folders.contains(file)){
+			folders.add(file);
+			scanFolder(file);
+			return true;
 		}
 		
-		singleImages.add(file);
-		return true;
+		if((file.isFile() || imageFilter.accept(file.getParentFile(), file.getName()))){
+			singleImages.add(file);
+			return true;
+		}
+		
+		return false;
 	}
 	
+	private void scanFolder(File file) {
+		for(File f : fileWalk(file)){
+			addFile(f);
+		}
+	}
+
 	public ArrayList<File> getImages(){
 		return allImages;
 	}
@@ -161,5 +185,28 @@ public class ImageGroup implements Serializable{
 	
 	public void removePropertyChangeListener(PropertyChangeListener listener){
 		change.removePropertyChangeListener(listener);
+	}
+	
+	private LinkedList<File> fileWalk(File file){
+		LinkedList<File> walkedFiles = new LinkedList<File>();
+		LinkedList<File> pendingFolders = new LinkedList<File>();
+		
+		pendingFolders.add(file);
+		
+		while(! pendingFolders.isEmpty()){
+			File folder = pendingFolders.pop();
+			
+			for (File f : folder.listFiles()){
+				if(! f.exists())
+					continue;
+				
+				if(f.isFile()){
+					walkedFiles.add(f);
+				}else if(f.isDirectory()){
+					pendingFolders.add(f);
+				}
+			}
+		}
+		return walkedFiles;
 	}
 }
