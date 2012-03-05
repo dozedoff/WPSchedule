@@ -39,6 +39,7 @@ public class Schedule implements Serializable , PropertyChangeListener{
 	LinkedList<ImageGroup> imageGroups = new LinkedList<ImageGroup>();
 	DateFormat format = new SimpleDateFormat("HH:mm");
 	ArrayList<File> images = new ArrayList<File>();
+	int imagePointer = 0;
 	
 	
 	// time comparison according to
@@ -160,6 +161,7 @@ public class Schedule implements Serializable , PropertyChangeListener{
 		}else{
 			imageGroups.add(imageGroup);
 			imageGroup.addListener(this);
+			updateImageList();
 			return true;
 		}
 	}
@@ -167,9 +169,30 @@ public class Schedule implements Serializable , PropertyChangeListener{
 	public void removeImageGroup(ImageGroup imageGroup){
 		if(imageGroups.remove(imageGroup))
 			imageGroup.removePropertyChangeListener(this);
+		
+		updateImageList();
+	}
+	
+	public File getImage(){
+		if(images.isEmpty()){
+			return null;
+		}
+		
+		File file = images.get(imagePointer);
+		if(imagePointer < (images.size()-1)){
+			imagePointer++;
+		}else{
+			imagePointer = 0;
+		}
+		
+		return file;
 	}
 
 	public void propertyChange(PropertyChangeEvent event) {
+		updateImageList();
+	}
+	
+	private void updateImageList(){
 		images.clear();
 		for(ImageGroup ig : imageGroups){
 			images.addAll(ig.getImages());
