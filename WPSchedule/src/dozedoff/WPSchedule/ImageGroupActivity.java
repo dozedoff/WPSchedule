@@ -18,12 +18,28 @@
 package dozedoff.WPSchedule;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class ImageGroupActivity extends Activity {
+	Button createGroup;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.group);
+		
+		createGroup =  (Button)this.findViewById(R.id.group);
+		createGroup.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent creatGroupIntent = new Intent(getApplicationContext(), CreateImageGroupActivity.class);
+				startActivity(creatGroupIntent);
+			}
+		});
 	}
 }

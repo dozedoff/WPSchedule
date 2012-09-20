@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--Copyright (C) 2012  Nicholas Wright
+/*  Copyright (C) 2012  Nicholas Wright
 	
 	part of 'WPSchedule', an Android wallpaper changer.
 
@@ -15,16 +14,17 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <Button
-        android:id="@+id/group"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Create new group" />
+ */
+package dozedoff.WPSchedule;
 
-</LinearLayout>
+import android.app.Activity;
+import android.os.Bundle;
+
+public class CreateImageGroupActivity extends Activity {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		setContentView(R.layout.creategroup);
+	}
+}
