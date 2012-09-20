@@ -18,16 +18,42 @@
 package dozedoff.WPSchedule;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * Main activity for WPSchedule
  */
 public class WPScheduleActivity extends Activity {
+	Button btnSchedule, btnGroup;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        Button btnSchedule = (Button)this.findViewById(R.id.btnSchedule);
+    	Button btnGroup = (Button)this.findViewById(R.id.btnGroup);
+        
+        btnSchedule.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent scheduleIntent = new Intent(v.getContext(), ScheduleActivity.class);
+				startActivity(scheduleIntent);
+			}
+		});
+        
+        btnGroup.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent groupIntent = new Intent(v.getContext(), ImageGroupActivity.class);
+				startActivity(groupIntent);
+			}
+		});
     }
 }

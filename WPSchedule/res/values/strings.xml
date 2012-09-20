@@ -3,5 +3,8 @@
 
     <string name="hello">Hello World, WPScheduleActivity!</string>
     <string name="app_name">WPSchedule</string>
+    <string name="addSchedule">Add Schedule</string>
+    <string name="Schedule">Schedule</string>
+    <string name="ImageGroup">ImageGroup</string>
 
 </resources>
